@@ -39,7 +39,7 @@ public class PlayerWindowControl {
     private PlayerWindowModel playerwindowmodel;  
     //private TranscriptionWindowModel transcriptionwindowmodel;
     private Database database;
-    private int i = 0; // FŸr Datenbankschleife
+    private int i = 0; // Fï¿½r Datenbankschleife
     private long[] importantValue;
     //private Zeit zeit;
     private getTime gt;
@@ -280,7 +280,7 @@ public class PlayerWindowControl {
 								
 								importantValue[j] = (Long) vectorbox.elementAt(zaehler).elementAt(3);
 								zaehler++;
-								//System.out.println("ZŠhler: " + zaehler);
+								//System.out.println("Zï¿½hler: " + zaehler);
 								//System.out.println("J: " + j);
 								
 								

@@ -5,13 +5,13 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.Point;
-import java.awt.Toolkit;
+
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowListener;
 import java.io.IOException;
-import java.net.URL;
+
 
 
 import javax.imageio.ImageIO;

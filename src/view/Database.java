@@ -27,10 +27,10 @@ public class Database {
 	 * Erstellt eine SQLite Datenbank mit folgenden Inhalt<br>
 	 * Tabelle: information<br>
 	 * Tupel: ID, name, text, rtime, vtime<br>
-	 * ID: 		Index der DatensŠtze<br>
+	 * ID: 		Index der Datensï¿½tze<br>
 	 * name: 	Name der Person, die im Video spricht<br>
 	 * text:	Text der von der Person gesprochen wird<br>
-	 * time:	Zeitpunkt im Video wo die Person anfŠngt zu reden<br><br>
+	 * time:	Zeitpunkt im Video wo die Person anfï¿½ngt zu reden<br><br>
 	 * 
 	 * Die SQLite wird an einem bestimmten Ort mit einem bestimmten Namen gespeichert<br><br>
 	 * DatabaseModel.getDbPath beinhaltet den momentanen Pfad<br>
@@ -41,7 +41,7 @@ public class Database {
 				
 		Class.forName("org.sqlite.JDBC");
         Connection conn =
-        		//habe .sqlite entfernt da es meiner Meinung gar nicht nštig ist
+        		//habe .sqlite entfernt da es meiner Meinung gar nicht nï¿½tig ist
           DriverManager.getConnection("jdbc:sqlite:" + DatabaseModel.getDbpath() + DatabaseModel.getDbname());
         Statement stat = conn.createStatement();
         
@@ -54,7 +54,7 @@ public class Database {
 		
 		Class.forName("org.sqlite.JDBC");
         Connection conn =
-        		//habe .sqlite entfernt da es meiner Meinung gar nicht nštig ist
+        		//habe .sqlite entfernt da es meiner Meinung gar nicht nï¿½tig ist
           DriverManager.getConnection("jdbc:sqlite:" + DatabaseModel.getDbpath() + DatabaseModel.getDbname());
 		
         Statement stat = conn.createStatement();
@@ -68,7 +68,7 @@ public void updateTableName(String oldtime, String name) throws Exception{
 		
 		Class.forName("org.sqlite.JDBC");
         Connection conn =
-        		//habe .sqlite entfernt da es meiner Meinung gar nicht nštig ist
+        		//habe .sqlite entfernt da es meiner Meinung gar nicht nï¿½tig ist
           DriverManager.getConnection("jdbc:sqlite:" + DatabaseModel.getDbpath() + DatabaseModel.getDbname());
 		
         Statement stat = conn.createStatement();
@@ -82,7 +82,7 @@ public void updateTableName(String oldtime, String name) throws Exception{
 		
 		Class.forName("org.sqlite.JDBC");
         Connection conn =
-        		//habe .sqlite entfernt da es meiner Meinung gar nicht nštig ist
+        		//habe .sqlite entfernt da es meiner Meinung gar nicht nï¿½tig ist
           DriverManager.getConnection("jdbc:sqlite:" + DatabaseModel.getDbpath() + DatabaseModel.getDbname());
 		
         Statement stat = conn.createStatement();
@@ -96,10 +96,10 @@ public void updateTableName(String oldtime, String name) throws Exception{
 	 * Es wird eine Verbindung zu einer SQLite Datenbank erstellt<br>
 	 * Der Name der Datenbank kommt aus der <code>DatabaseModel.getDbName</code> mit Typbezeichnung ".sqlite"<br>
 	 * Durch eine Datanbankabfrage("SELECT * FROM tabname;") werden alle Daten abgerufen<br>
-	 * FŸr jede Tabellenspalte wird eine ArrayList benštigt<br>
+	 * Fï¿½r jede Tabellenspalte wird eine ArrayList benï¿½tigt<br>
 	 * Die Daten werden dann in einer while() Schleife in das jeweilige ArrayList geschrieben<br>
-	 * Anschlie§end werden alle Listen in eine weitere ArrayList geschrieben.<br>
-	 * Diese letzte Liste wird zum Schluss an die Funktion zurŸckgegeben. <br>
+	 * Anschlieï¿½end werden alle Listen in eine weitere ArrayList geschrieben.<br>
+	 * Diese letzte Liste wird zum Schluss an die Funktion zurï¿½ckgegeben. <br>
 	 *
 	 * @return
 	 * @throws Exception
@@ -142,7 +142,7 @@ public void updateTableName(String oldtime, String name) throws Exception{
 	 * Bei jedem Schleifendurchlauf der While() Schleife wird ein neuer Vector<Object> erzeugt<br>
 	 * In diesem wird ein ganzer Datensatz geschrieben.<br>
 	 * Am Ende der Schleife wird der Vector wiederum in einen Vector geschrieben.<br>
-	 * Dieser wird anschlie§en zurŸckgegeben.<br>
+	 * Dieser wird anschlieï¿½en zurï¿½ckgegeben.<br>
 	 * @return
 	 * @throws Exception
 	 */
@@ -153,7 +153,7 @@ public void updateTableName(String oldtime, String name) throws Exception{
           DriverManager.getConnection("jdbc:sqlite:" + DatabaseModel.getDbpath() + DatabaseModel.getDbname());
         Statement stat = conn.createStatement();
         
-        ResultSet rs = stat.executeQuery("select * from information order by 'playertime' ASC;");
+        ResultSet rs = stat.executeQuery("select * from information order by playertime ASC;");
 		
 		Vector<Vector<Object>> vectorbox = new Vector<Vector<Object>>();
 		
@@ -278,7 +278,7 @@ public void updateTableName(String oldtime, String name) throws Exception{
         Statement stat = conn.createStatement(); 
         stat.executeUpdate("DROP TABLE IF EXISTS information");
         stat.executeUpdate("CREATE TABLE IF NOT EXISTS information (ID INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, text TEXT NOT NULL, time VARCHAR(12) NOT NULL)");
-        System.out.println("lŠnge: " + rowData.get(0).size()/3);
+        System.out.println("lï¿½nge: " + rowData.get(0).size()/3);
         System.out.println("Inhalt: " + rowData.get(0));
         
         
