@@ -261,8 +261,11 @@ public class PlayerWindowControl {
 			
 			playerwindowmodel.setPlayer(PlayerWindow.Player);
 			
-			
-			
+			/*
+			 * test2 wird false wenn i ist gleich vectorgröße
+			 * dadurch wird das weitere überprüfen verhindert
+			 */
+			boolean test2= true;
 		    while(PlayerWindow.Player.isPlaying()) 
 		    {	
 		    	boolean test = false;
@@ -270,7 +273,7 @@ public class PlayerWindowControl {
 		    		
 		    			Vector<Vector<Object>> vectorbox = database.getDataVector();
 						importantValue = new long[vectorbox.size()];
-						if(i < vectorbox.size()) 
+						if(i < vectorbox.size() && test2 == true) 
 						{
 							int zaehler = 0;
 							
@@ -289,19 +292,25 @@ public class PlayerWindowControl {
 						}
 						
 
-						if(getTime.tplayer() >= importantValue[i]) 
+						if(getTime.tplayer() >= importantValue[i] && test2 == true) 
 						{
 							SubTitleWindow.getNameEingabe().setText(vectorbox.elementAt(i).elementAt(0).toString());
 							SubTitleWindow.getTextEingabe().setText(vectorbox.elementAt(i).elementAt(1).toString());
-							System.out.println(vectorbox.size());
-							System.out.println("change");
+							/* Debug Ausgabe */
+							//System.out.println(vectorbox.size());
+							//System.out.println("change");
 								
-								if(!test && i < vectorbox.size())
+								if(!test && i < vectorbox.size()-1)
 								{	
-									System.out.println("vor increment" + i);
+									//System.out.println("vor increment" + i);
 									i++;
-									System.out.println("nach increment" + i);
+									//System.out.println("nach increment" + i);
 									test = true;
+									
+									if(i == vectorbox.size())
+									{
+										test2 = false;
+									}
 								}							
 						}
 						
