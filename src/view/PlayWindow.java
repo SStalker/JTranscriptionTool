@@ -2,6 +2,7 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.Point;
 
 import java.awt.Dimension;
@@ -12,9 +13,12 @@ import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentListener;
 import java.awt.event.WindowListener;
+import java.io.IOException;
 
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -45,11 +49,11 @@ public class PlayWindow{
 	private JButton showSubtitle = new JButton("Untertitel anzeigen");
 	private JButton changeFont = new JButton("Zeichensatz \u00E4ndern");
 	
-	private JButton seekf = new JButton(new ImageIcon("src/include/pictures/PlayWindow/media-skip-forward.png"));
-    private JButton seekb = new JButton(new ImageIcon("src/include/pictures/PlayWindow/media-skip-backward.png"));
-    private JButton stop = new JButton(new ImageIcon("src/include/pictures/PlayWindow/media-playback-stop.png"));
-    private JButton pause = new JButton(new ImageIcon("src/include/pictures/PlayWindow/media-playback-pause.png"));
-    private JButton play = new JButton(new ImageIcon("src/include/pictures/PlayWindow/media-playback-start.png"));
+	private JButton seekf = new JButton();
+    private JButton seekb = new JButton();
+    private JButton stop = new JButton();
+    private JButton pause = new JButton();
+    private JButton play = new JButton();
     
     private static JLabel timeLabel = new JLabel("00:00:00:000");
     
@@ -63,6 +67,39 @@ public class PlayWindow{
 	
 	
 	private void init() {
+		
+		/* Bilder setzen für die Jar-file*/
+		Image image1;
+		Image image2;
+		Image image3;
+		Image image4;
+		Image image5;
+		try 
+		{
+			image1 = ImageIO.read(getClass().getResourceAsStream(("/include/pictures/PlayWindow/media-skip-forward.png")));
+			image2 = ImageIO.read(getClass().getResourceAsStream(("/include/pictures/PlayWindow/media-skip-backward.png")));
+			image3 = ImageIO.read(getClass().getResourceAsStream(("/include/pictures/PlayWindow/media-playback-stop.png")));
+			image4 = ImageIO.read(getClass().getResourceAsStream(("/include/pictures/PlayWindow/media-playback-pause.png")));
+			image5 = ImageIO.read(getClass().getResourceAsStream(("/include/pictures/PlayWindow/media-playback-start.png")));
+			
+			Icon icon1 = new ImageIcon(image1);
+			Icon icon2 = new ImageIcon(image2);
+			Icon icon3 = new ImageIcon(image3);
+			Icon icon4 = new ImageIcon(image4);
+			Icon icon5 = new ImageIcon(image5);
+			
+			seekb.setIcon(icon1);
+			seekf.setIcon(icon2);
+			stop.setIcon(icon3);
+			pause.setIcon(icon4);
+			play.setIcon(icon5);
+			
+		}
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+
 		
 		PlayWindowModel.setZeit(timeLabel);
 		

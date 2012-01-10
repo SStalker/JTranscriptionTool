@@ -3,13 +3,19 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Image;
 import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowListener;
+import java.io.IOException;
+import java.net.URL;
 
 
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -30,11 +36,11 @@ public class CommentWindow {
 	static JTextArea textEingabe = new JTextArea();
 	JPanel buttonPanel = new JPanel(new FlowLayout(0,0,0));
 	
-	JButton end = new JButton(new ImageIcon("src/include/pictures/CommentWindow/arrow-right-double.png"));
-	JButton forward = new JButton(new ImageIcon("src/include/pictures/CommentWindow/arrow-right.png"));
-	JButton backward = new JButton(new ImageIcon("src/include/pictures/CommentWindow/arrow-left.png"));
-	JButton start = new JButton(new ImageIcon("src/include/pictures/CommentWindow/arrow-left-double.png"));
-	JButton delete = new JButton(new ImageIcon("src/include/pictures/CommentWindow/arrow-up.png"));
+	JButton end = new JButton();
+	JButton forward = new JButton();
+	JButton backward = new JButton();
+	JButton start = new JButton();
+	JButton delete = new JButton();
 	
 	JButton ok = new JButton("OK");
 	JButton closeFrame = new JButton("Formular schlie\u00dfen");
@@ -48,6 +54,40 @@ public class CommentWindow {
 	private void init() {
 		
 		/* KommentarFenster */
+		
+		
+		/* Bilder setzen für die Jar-file*/
+		Image image1;
+		Image image2;
+		Image image3;
+		Image image4;
+		Image image5;
+		try {
+			image1 = ImageIO.read(getClass().getResourceAsStream(("/include/pictures/CommentWindow/arrow-right-double.png")));
+			image2 = ImageIO.read(getClass().getResourceAsStream(("/include/pictures/CommentWindow/arrow-right.png")));
+			image3 = ImageIO.read(getClass().getResourceAsStream(("/include/pictures/CommentWindow/arrow-left.png")));
+			image4 = ImageIO.read(getClass().getResourceAsStream(("/include/pictures/CommentWindow/arrow-left-double.png")));
+			image5 = ImageIO.read(getClass().getResourceAsStream(("/include/pictures/CommentWindow/arrow-up.png")));
+			
+			Icon icon1 = new ImageIcon(image1);
+			Icon icon2 = new ImageIcon(image2);
+			Icon icon3 = new ImageIcon(image3);
+			Icon icon4 = new ImageIcon(image4);
+			Icon icon5 = new ImageIcon(image5);
+			
+			end.setIcon(icon1);
+			forward.setIcon(icon2);
+			backward.setIcon(icon3);
+			start.setIcon(icon4);
+			delete.setIcon(icon5);
+			
+		} 
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		
+		
 		
 		commentWindow.setSize(new Dimension(600,400));
 		commentWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

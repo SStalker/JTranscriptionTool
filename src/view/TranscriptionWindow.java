@@ -2,9 +2,11 @@ package view;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeListener;
-import java.text.DateFormat;
 
+import java.io.IOException;
+
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 
@@ -13,11 +15,11 @@ import model.TranscriptionWindowModel;
 
 public class TranscriptionWindow {
 	
-		private JButton seekb = new JButton(new ImageIcon("src/include/pictures/TranscriptionWindow/media-skip-forward.png"));
-	    private JButton seekf = new JButton(new ImageIcon("src/include/pictures/TranscriptionWindow/media-skip-backward.png"));
-		private JButton stop = new JButton(new ImageIcon("src/include/pictures/TranscriptionWindow/media-playback-stop.png"));
-	    private JButton pause = new JButton(new ImageIcon("src/include/pictures/TranscriptionWindow/media-playback-pause.png"));
-	    private JButton play = new JButton(new ImageIcon("src/include/pictures/TranscriptionWindow/media-playback-start.png"));
+		private JButton seekb = new JButton();
+	    private JButton seekf = new JButton();
+		private JButton stop = new JButton();
+	    private JButton pause = new JButton();
+	    private JButton play = new JButton();
 	    private JSlider audio = new JSlider(JSlider.HORIZONTAL);
 	    private static JSlider video = new JSlider(JSlider.HORIZONTAL);
 	    private static JFrame transkribieren = new JFrame("Transkribieren");
@@ -51,6 +53,37 @@ public class TranscriptionWindow {
 	    
 	public TranscriptionWindow(){
 		
+		/* Bilder setzen für die Jar-file*/
+		Image image1;
+		Image image2;
+		Image image3;
+		Image image4;
+		Image image5;
+		try 
+		{
+			image1 = ImageIO.read(getClass().getResourceAsStream(("/include/pictures/TranscriptionWindow/media-skip-forward.png")));
+			image2 = ImageIO.read(getClass().getResourceAsStream(("/include/pictures/TranscriptionWindow/media-skip-backward.png")));
+			image3 = ImageIO.read(getClass().getResourceAsStream(("/include/pictures/TranscriptionWindow/media-playback-stop.png")));
+			image4 = ImageIO.read(getClass().getResourceAsStream(("/include/pictures/TranscriptionWindow/media-playback-pause.png")));
+			image5 = ImageIO.read(getClass().getResourceAsStream(("/include/pictures/TranscriptionWindow/media-playback-start.png")));
+			
+			Icon icon1 = new ImageIcon(image1);
+			Icon icon2 = new ImageIcon(image2);
+			Icon icon3 = new ImageIcon(image3);
+			Icon icon4 = new ImageIcon(image4);
+			Icon icon5 = new ImageIcon(image5);
+			
+			seekb.setIcon(icon1);
+			seekf.setIcon(icon2);
+			stop.setIcon(icon3);
+			pause.setIcon(icon4);
+			play.setIcon(icon5);
+			
+		}
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
 
 		transcriptionmodel = new TranscriptionWindowModel();
 		transcriptionmodel.setVideo(video);

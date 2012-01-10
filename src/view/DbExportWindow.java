@@ -3,9 +3,14 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowListener;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,14 +30,45 @@ public class DbExportWindow {
 	JPanel exportunten = new JPanel();
 	JButton exportbutton = new JButton("Export!");
 	JPanel RechtsZeit = new JPanel(new FlowLayout());
-	JButton ende = new JButton(new ImageIcon("src/include/pictures/DBExportWindow/arrow-right-double.png"));
-	JButton forward = new JButton(new ImageIcon("src/include/pictures/DBExportWindow/arrow-right.png"));
-	JButton backward = new JButton(new ImageIcon("src/include/pictures/DBExportWindow/arrow-left.png"));
-	JButton anfang = new JButton(new ImageIcon("src/include/pictures/DBExportWindow/arrow-left-double.png"));
+	JButton end = new JButton(new ImageIcon("bin/include/pictures/DBExportWindow/arrow-right-double.png"));
+	JButton forward = new JButton(new ImageIcon("bin/include/pictures/DBExportWindow/arrow-right.png"));
+	JButton backward = new JButton(new ImageIcon("bin/include/pictures/DBExportWindow/arrow-left.png"));
+	JButton start = new JButton(new ImageIcon("bin/include/pictures/DBExportWindow/arrow-left-double.png"));
 	
 	
 	
 	private void init(){
+		
+		/* Bilder setzen für die Jar-file*/
+		Image image1;
+		Image image2;
+		Image image3;
+		Image image4;
+		
+		try {
+			image1 = ImageIO.read(getClass().getResourceAsStream(("/include/pictures/DBExportWindow/arrow-right-double.png")));
+			image2 = ImageIO.read(getClass().getResourceAsStream(("/include/pictures/DBExportWindow/arrow-right.png")));
+			image3 = ImageIO.read(getClass().getResourceAsStream(("/include/pictures/DBExportWindow/arrow-left.png")));
+			image4 = ImageIO.read(getClass().getResourceAsStream(("/include/pictures/DBExportWindow/arrow-left-double.png")));
+			
+			
+			Icon icon1 = new ImageIcon(image1);
+			Icon icon2 = new ImageIcon(image2);
+			Icon icon3 = new ImageIcon(image3);
+			Icon icon4 = new ImageIcon(image4);
+			
+			
+			end.setIcon(icon1);
+			forward.setIcon(icon2);
+			backward.setIcon(icon3);
+			start.setIcon(icon4);
+			
+			
+		} 
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 		
 	fenster.setSize(new Dimension(420,200));
 	fenster.setLayout(null);
@@ -62,10 +98,10 @@ public class DbExportWindow {
 
 	RechtsZeit.setBounds(150,31,320,100);
 
-	RechtsZeit.add(anfang);
+	RechtsZeit.add(start);
 	RechtsZeit.add(backward);
 	RechtsZeit.add(forward);
-	RechtsZeit.add(ende);
+	RechtsZeit.add(end);
 	fenster.add(RechtsZeit);	
 	fenster.setVisible(true);	
 }	
@@ -97,7 +133,7 @@ public void setListenerNameSave(ActionListener l){
 	
 	public void setListenerStart(ActionListener l)
 	{
-		this.anfang.addActionListener(l);
+		this.start.addActionListener(l);
 	}
 	
 	public void setListenerBackward(ActionListener l)
@@ -111,7 +147,7 @@ public void setListenerNameSave(ActionListener l){
 	}
 	public void setListenerEnd(ActionListener l)
 	{
-		this.ende.addActionListener(l);
+		this.end.addActionListener(l);
 	}
 	public JTextField getEingabeStart() {
 		return eingabeStart;
